@@ -536,7 +536,6 @@ C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Release\System.Xml.XDocument.dll
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Release\System.Xml.XmlDocument.dll
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Release\System.Xml.XmlSerializer.dll
-C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\BluetoothLE.csprojResolveAssemblyReference.cache
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\App.g.i.cs
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\App.g.cs
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\MainPage.g.i.cs
@@ -568,8 +567,6 @@ C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\BluetoothLE.csproj.GenerateResource.Cache
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\priconfig.xml
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\priconfig.xml.intermediate
-C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\layout.resfiles
-C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\layout.resfiles.intermediate
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\resources.resfiles
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\resources.resfiles.intermediate
 C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\pri.resfiles
@@ -800,3 +797,11 @@ C:\Users\jason\Desktop\c sharp notes\ilc\resources.pri
 C:\Users\jason\Desktop\c sharp notes\ilc\SafeTypes.g.cs
 C:\Users\jason\Desktop\c sharp notes\ilc\SharedStubs.g.cs
 C:\Users\jason\Desktop\c sharp notes\BluetoothLE.build.appxrecipe
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\BluetoothLE.csprojAssemblyReference.cache
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\BluetoothLE.csproj.CopyComplete
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\unfiltered.layout.resfiles
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\unfiltered.layout.resfiles.intermediate
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\filtered.layout.resfiles
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\filtered.layout.resfiles.intermediate
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\excluded.layout.resfiles
+C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\obj\x86\Release\excluded.layout.resfiles.intermediate

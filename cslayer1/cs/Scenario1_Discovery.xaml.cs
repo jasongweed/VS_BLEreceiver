@@ -153,7 +153,7 @@ namespace SDKTemplate
             return null;
         }
 
-        private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInfo)
+        private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInfo) 
         {
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>

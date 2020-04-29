@@ -362,7 +362,7 @@ namespace SDKTemplate
 
         private async void CharacteristicList_SelectionChanged()
         {
-            selectedCharacteristic = null;
+            selectedCharacteristic = null; 
 
             var attributeInfoDisp = (BluetoothLEAttributeDisplay)CharacteristicList.SelectedItem;
             if (attributeInfoDisp == null)
