@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\BluetoothLE.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\BluetoothLE.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\BluetoothLE.csproj",
+        "projectName": "BluetoothLE",
+        "projectPath": "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\BluetoothLE.csproj",
+        "projectJsonPath": "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\project.json",
+        "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jason\\Desktop\\Spintooth\\Visual Studio files\\BluetoothLE_Esp32\\cslayer1\\cs\\obj\\",
+        "projectStyle": "ProjectJson",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        }
+      },
+      "dependencies": {
+        "Microsoft.NETCore.UniversalWindowsPlatform": "[5.0.0, )"
+      },
+      "frameworks": {
+        "uap10.0.16299": {}
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
