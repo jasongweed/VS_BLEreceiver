@@ -47,7 +47,7 @@ namespace SDKTemplate
             PrepareVirtualKeyboardInput();
             //attempt at gamepad
             //PrepareGamepadInput();
-            StartSensorKeyboardLoopTask();
+            StartSensorKeyboardLoopTask();// jgw 4/30/20 commented out to make faster (?)
             Debug.WriteLine("starting Keyboard Manager");
         }
 
