@@ -168,7 +168,7 @@ namespace SDKTemplate
                         // Make sure device isn't already present in the list.
                         if (FindBluetoothLEDeviceDisplay(deviceInfo.Id) == null)
                         {
-                            if (deviceInfo.Name != "geralt")// string.Empty)
+                            if (deviceInfo.Name != "")// "wildhuntzzzz")// string.Empty)
                             {
                                 // If device has a friendly name display it immediately.
                                 KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInfo));
@@ -210,7 +210,7 @@ namespace SDKTemplate
                         {
                             deviceInfo.Update(deviceInfoUpdate);
                             // If device has been updated with a friendly name it's no longer unknown.
-                            if (deviceInfo.Name != "geralt")// String.Empty)
+                            if (deviceInfo.Name != "")// "wildhunt")// String.Empty)
                             {
                                 KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInfo));
                                 UnknownDevices.Remove(deviceInfo);

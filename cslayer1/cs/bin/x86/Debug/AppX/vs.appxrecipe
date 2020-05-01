@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-04-29T05:54:11.403</Modified>
+      <Modified>2020-05-01T06:50:36.064</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\BluetoothLEUniversal.exe">
       <PackagePath>entrypoint\BluetoothLEUniversal.exe</PackagePath>
-      <Modified>2020-04-29T05:54:10.939</Modified>
+      <Modified>2020-05-01T06:50:35.661</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\microsoft.csharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -492,27 +492,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.649</Modified>
+      <Modified>2020-05-01T06:50:35.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.649</Modified>
+      <Modified>2020-05-01T06:50:35.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Styles\Styles.xbf">
       <PackagePath>Styles\Styles.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.649</Modified>
+      <Modified>2020-05-01T06:50:35.390</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Scenario1_Discovery.xbf">
       <PackagePath>Scenario1_Discovery.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.649</Modified>
+      <Modified>2020-05-01T06:50:35.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Scenario3_ServerForeground.xbf">
       <PackagePath>Scenario3_ServerForeground.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.650</Modified>
+      <Modified>2020-05-01T06:50:35.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Scenario2_Client.xbf">
       <PackagePath>Scenario2_Client.xbf</PackagePath>
-      <Modified>2020-04-29T05:54:10.650</Modified>
+      <Modified>2020-05-01T06:50:35.391</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.16299.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -520,11 +520,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-04-28T18:37:55.090</Modified>
+      <Modified>2020-04-30T21:28:58.499</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\Desktop\Spintooth\Visual Studio files\BluetoothLE_Esp32\cslayer1\cs\bin\x86\Debug\Core\BluetoothLEUniversal.exe">
       <PackagePath>BluetoothLEUniversal.exe</PackagePath>
-      <Modified>2020-04-29T05:54:11.397</Modified>
+      <Modified>2020-05-01T06:50:36.059</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

@@ -29,7 +29,7 @@
                 <Image Source="{x:Bind GlyphBitmapImage, Mode=OneWay}" Stretch="UniformToFill" Grid.Column="0" Height="40" Width="40" Margin="5" VerticalAlignment="Top"/>
                 <StackPanel Grid.Column="1" Margin="5">
                     <TextBlock Style="{StaticResource ListItemTextStyle}" TextWrapping="WrapWholeWords">
-                        Name: <Run Text="{x:Bind Name, Mode=OneWay}" FontWeight="Bold"/>
+                        Name: <Run Text="{x:Bind Name, Mode=OneWay}" FontWeight="Bold"/>, Id: <Run Text="{x:Bind Id, Mode=OneWay}" FontWeight="Bold"/> 
                     </TextBlock>
                     <TextBlock>
                         IsPaired: <Run Text="{x:Bind IsPaired, Mode=OneWay}"/>, IsConnected: <Run Text="{x:Bind IsConnected, Mode=OneWay}"/>, IsConnectable:<Run Text="{x:Bind IsConnectable, Mode=OneWay}"/>

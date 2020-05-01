@@ -98,9 +98,8 @@ namespace SDKTemplate
             //connect to the bluetooth automatically
             ConnectButton_Click();
             //jgw start up the TimedKeyboardManager utility class
-            TimedKeyboardManager.Start();
-
-            
+            TimedKeyboardManager.Start(); //note this is a static class (i.e. not instantiated)
+                       
             
         }
 
@@ -635,41 +634,51 @@ namespace SDKTemplate
             // UTF-8 buffers to readable text. It can be extended to support other formats if your app needs them.
 
             //JGW ##################################################################################################
+            //4.30.20 TODO
+            //pass data to keyboard manager
+            TimedKeyboardManager.evaluateBLEdata(buffer);
+
+
+            /*
+             *
+             * 
+           if (data == null)
+           {
+               //to nothing
+           }
+
+           if (data != null)
+           {
+              
+
+               try
+               {
+                   char dataChar = (char)data[0];
+                   //double dataDouble = Char.GetNumericValue(dataChar);
+                   double dataDouble = (double)dataChar;
+                   Debug.WriteLine("got input"); //dataDouble.ToString()
+                   if (dataDouble >= 0 && dataDouble <=100) //NOTE this presume we're working with a 0-10 range of data
+                   {
+
+                       if (dataDouble > 18)
+                       {
+                           Debug.WriteLine("trigger now");
+                           TimedKeyboardManager.newestTimeSesorAboveThreshold = TimedKeyboardManager.globalStopwatch.ElapsedMilliseconds;   //uncomment this line to return input injecion
+
+                       }
+                       return dataDouble.ToString();
+                   }
+
+               }
+               catch {
+               }
+
+           }*/
+            
+            //jgw: below is old code from example used for this method
+
             byte[] data;
             CryptographicBuffer.CopyToByteArray(buffer, out data);
-
-            if (data == null)
-            {
-                //to nothing
-            }
-
-            if (data != null)
-            {
-                
-                try
-                {
-                    char dataChar = (char)data[0];
-                    //double dataDouble = Char.GetNumericValue(dataChar);
-                    double dataDouble = (double)dataChar;
-                    Debug.WriteLine("got input"); //dataDouble.ToString()
-                    if (dataDouble >= 0 && dataDouble <=100) //NOTE this presume we're working with a 0-10 range of data
-                    {
-                       
-                        if (dataDouble > 18)
-                        {
-                            Debug.WriteLine("trigger now");
-                            TimedKeyboardManager.newestTimeSesorAboveThreshold = TimedKeyboardManager.globalStopwatch.ElapsedMilliseconds;   //uncomment this line to return input injecion
-                            
-                        }
-                        return dataDouble.ToString();
-                    }
-                    
-                }
-                catch {
-                }
-
-            }
-
 
             if (format != null)
             {

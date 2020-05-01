@@ -7,6 +7,9 @@ using System.Diagnostics;
 using Windows.UI.Input.Preview.Injection;
 using Windows.UI.Xaml;
 using Windows.Gaming.Input;
+using System.Net.Http;
+using Windows.Storage.Streams;
+using Windows.Security.Cryptography;
 
 namespace SDKTemplate
 {
@@ -46,6 +49,46 @@ namespace SDKTemplate
             //PrepareGamepadInput();
             StartSensorKeyboardLoopTask();
             Debug.WriteLine("starting Keyboard Manager");
+        }
+
+        public static void evaluateBLEdata(IBuffer buffer)
+        //this takes a data packet and modifies the variable newestTimeSensorAboveThreshold (shared between main thread and looping task), 
+        //which the StartSensorKeyboardLoopTask references to determine when to release the button press
+        {
+            byte[] data;
+            CryptographicBuffer.CopyToByteArray(buffer, out data);
+
+            if (data == null)
+            {
+                //do nothing
+            }
+
+            if (data != null)
+            {
+
+
+                try
+                {
+                    char dataChar = (char)data[0];
+                    double dataDouble = (double)dataChar;
+                    Debug.WriteLine("got input"); //dataDouble.ToString()
+                    if (dataDouble >= 0 && dataDouble <= 100) 
+                    {
+
+                        if (dataDouble > 18) //18 is threhold for iphone based sensor as of
+                        {
+                            Debug.WriteLine("trigger now");
+                            TimedKeyboardManager.newestTimeSesorAboveThreshold = TimedKeyboardManager.globalStopwatch.ElapsedMilliseconds;   //uncomment this line to return input injecion
+
+                        }
+                        //return dataDouble.ToString();
+                    }
+
+                }
+                catch
+                {
+                }
+            }
         }
 
         public static void StartSensorKeyboardLoopTask()
@@ -97,7 +140,7 @@ namespace SDKTemplate
                         //if (keyPressed == true)
                         {
                             //let off the gas!
-                            releaseKey();
+                            releaseKey(); //multiple of these needed for rocket league
                             //attempt Gamepad
                             //releaseGamePadButton();
                             keyPressed = false;
@@ -105,9 +148,10 @@ namespace SDKTemplate
 
                     }
 
+                    Task.Delay(300);
                     
 
-                }//end of gameloop
+                }//end of loop to update button pressing
 
             });///end of asynchronous task function definition
         }
