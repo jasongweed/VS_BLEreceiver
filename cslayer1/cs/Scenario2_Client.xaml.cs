@@ -149,6 +149,8 @@ namespace SDKTemplate
             try
             {
                 // BT_Code: BluetoothLEDevice.FromIdAsync must be called from a UI thread because it may prompt for consent.
+
+                //bluetoothLeDevice = null;
                 bluetoothLeDevice = await BluetoothLEDevice.FromIdAsync(rootPage.SelectedBleDeviceId);
 
                 if (bluetoothLeDevice == null)
@@ -447,8 +449,8 @@ namespace SDKTemplate
 
         private void keepReadingValues()
         {
-            var t =  Task.Run(() =>
-                {
+            var t = Task.Run( async () =>
+               {
                     async void characteristicRead()
                     {
                         // BT_Code: Read the actual value from the device by using Uncached.
@@ -457,21 +459,29 @@ namespace SDKTemplate
                         {
                             string formattedResult = FormatValueByPresentation(result.Value, presentationFormat);
                             rootPage.NotifyUser($"Read result: {formattedResult}", NotifyType.StatusMessage);
+                            Debug.WriteLine("Read Suceeded");
                         }
                         else
                         {
                             rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
+                            Debug.WriteLine("Read failed");
                         }
 
                     }
 
+                    //jgw 5/1/20, may need an outer while loop that keeps reconnecting with device if no recent read  
+
+
                     while (keepReading == true)
                     {
                         characteristicRead();
-                        Task.Delay(150).Wait();
+                        await Task.Delay(150);
                     }
 
+
                 });
+
+                
            
         }
 
@@ -674,9 +684,10 @@ namespace SDKTemplate
                }
 
            }*/
-            
+
             //jgw: below is old code from example used for this method
 
+            /*
             byte[] data;
             CryptographicBuffer.CopyToByteArray(buffer, out data);
 
@@ -714,9 +725,16 @@ namespace SDKTemplate
                
                 return "Empty data received";
             }
+            */
 
-            return "Unknown";
+            //jgw this below is redudant but helpful for display what info is received.Method needs to return a string anyway
+            byte[] data;
+            CryptographicBuffer.CopyToByteArray(buffer, out data);
+            char dataChar = (char)data[0];
+            double dataDouble = (double)dataChar;
+            //Debug.WriteLine("got input"); //dataDouble.ToString()
+            return dataDouble.ToString();
         }
-
+        
     }
 }

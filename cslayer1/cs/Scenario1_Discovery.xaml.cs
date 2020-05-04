@@ -56,6 +56,10 @@ namespace SDKTemplate
                 rootPage.SelectedBleDeviceId = bleDeviceDisplay.Id;
                 rootPage.SelectedBleDeviceName = bleDeviceDisplay.Name;
             }
+
+            //clear all other bluetooth devices:
+            KnownDevices.Clear();
+            UnknownDevices.Clear();
         }
         private void EnumerateButton_Click()
         {
@@ -168,7 +172,7 @@ namespace SDKTemplate
                         // Make sure device isn't already present in the list.
                         if (FindBluetoothLEDeviceDisplay(deviceInfo.Id) == null)
                         {
-                            if (deviceInfo.Name != "Tile")// "wildhuntzzzz")// string.Empty)
+                            if (deviceInfo.Name != "Tile" && !deviceInfo.Name.Contains("Samsung") && !deviceInfo.Name.Contains("Alta") && !deviceInfo.Name.Contains("iPad") && !deviceInfo.Name.Contains("MacBook"))// "wildhuntzzzz")// string.Empty)
                             {
                                 // If device has a friendly name display it immediately.
                                 KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInfo));
@@ -210,7 +214,7 @@ namespace SDKTemplate
                         {
                             deviceInfo.Update(deviceInfoUpdate);
                             // If device has been updated with a friendly name it's no longer unknown.
-                            if (deviceInfo.Name != "Tile")// "wildhunt")// String.Empty)
+                            if (deviceInfo.Name != "Tile" && !deviceInfo.Name.Contains("Samsung") && !deviceInfo.Name.Contains("Alta") && !deviceInfo.Name.Contains("iPad") && !deviceInfo.Name.Contains("MacBook"))// "wildhunt")// String.Empty)
                             {
                                 KnownDevices.Add(new BluetoothLEDeviceDisplay(deviceInfo));
                                 UnknownDevices.Remove(deviceInfo);

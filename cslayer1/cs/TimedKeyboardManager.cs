@@ -71,11 +71,11 @@ namespace SDKTemplate
                 {
                     char dataChar = (char)data[0];
                     double dataDouble = (double)dataChar;
-                    Debug.WriteLine("got input"); //dataDouble.ToString()
+                    //Debug.WriteLine("got input"); //dataDouble.ToString()
                     if (dataDouble >= 0 && dataDouble <= 100) 
                     {
 
-                        if (dataDouble > 18) //18 is threhold for iphone based sensor as of
+                        if (dataDouble > 5) //18 is threhold for iphone based sensor as of
                         {
                             Debug.WriteLine("trigger now");
                             TimedKeyboardManager.newestTimeSesorAboveThreshold = TimedKeyboardManager.globalStopwatch.ElapsedMilliseconds;   //uncomment this line to return input injecion
@@ -125,7 +125,10 @@ namespace SDKTemplate
                             if (elapsedFrozen - lastKeyPressTime > 1)
                             {
                                 //press the key to accelerate in game!
-                                pressKey();
+                                if (!keyPressed)
+                                {
+                                    pressKey();
+                                }
                                 //attempt gamepad
                                 //pressGamepadButton();
                                 lastKeyPressTime = elapsedFrozen;
@@ -140,7 +143,11 @@ namespace SDKTemplate
                         //if (keyPressed == true)
                         {
                             //let off the gas!
-                            releaseKey(); //multiple of these needed for rocket league
+                            if (keyPressed)
+                            {
+                                releaseKey();
+                            }
+                            
                             //attempt Gamepad
                             //releaseGamePadButton();
                             keyPressed = false;
@@ -148,7 +155,7 @@ namespace SDKTemplate
 
                     }
 
-                    Task.Delay(300);
+                    //Task.Delay(3000);
                     
 
                 }//end of loop to update button pressing
@@ -197,7 +204,7 @@ namespace SDKTemplate
 
         public static void releaseKey()
         {
-            vKeyBoardInfoList.Clear();
+            vKeyBoardInfoList.Clear(); //jgw commented out 5/4/20
             vKeyBoardInfoList.Add(vKeyBoardInfo_Release);
             try
             {
@@ -220,7 +227,7 @@ namespace SDKTemplate
 
         public static void pressKey()
         {
-            vKeyBoardInfoList.Clear();
+            vKeyBoardInfoList.Clear();  //jgw commented out 5/4/20
             vKeyBoardInfoList.Add(vKeyBoardInfo_Press);
             try
             {
@@ -247,9 +254,9 @@ namespace SDKTemplate
 
         static public void TestNewThread()
         {
-            var t = Task.Run(() => {
-                Debug.WriteLine("Executed function from new thread!!");
-            });
+            //var t = Task.Run(() => {
+            //    Debug.WriteLine("Executed function from new thread!!");
+            //});
         }
 
 
