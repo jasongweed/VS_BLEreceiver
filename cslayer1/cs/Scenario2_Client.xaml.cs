@@ -13,7 +13,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
@@ -21,12 +20,11 @@ using Windows.Devices.Enumeration;
 using Windows.Security.Cryptography;
 using Windows.Storage.Streams;
 using Windows.UI.Core;
+using Windows.UI.Input.Preview.Injection;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using Windows.UI.Input.Preview.Injection;
 using Windows.UI.Xaml.Input;
-using Windows.System;
+using Windows.UI.Xaml.Navigation;
 
 namespace SDKTemplate
 {
@@ -42,7 +40,7 @@ namespace SDKTemplate
 
         private ObservableCollection<BluetoothLEAttributeDisplay> ServiceCollection = new ObservableCollection<BluetoothLEAttributeDisplay>();
         private ObservableCollection<BluetoothLEAttributeDisplay> CharacteristicCollection = new ObservableCollection<BluetoothLEAttributeDisplay>();
-        
+
 
         private BluetoothLEDevice bluetoothLeDevice = null;
         private GattCharacteristic selectedCharacteristic;
@@ -60,26 +58,26 @@ namespace SDKTemplate
         private InjectedInputKeyboardInfo vKeyBoardInfo3 = new InjectedInputKeyboardInfo();
         private InjectedInputKeyboardInfo vKeyBoardInfo4 = new InjectedInputKeyboardInfo();
 
-        
+
 
         List<InjectedInputKeyboardInfo> vKeyBoardInfoList = new List<InjectedInputKeyboardInfo>();
 
 
-        
+
         /*public void StrikeUp()
         {
             //inject the sequence of keys to the virtual keyboard, finally
             //inputInjector.InjectKeyboardInput(vKeyBoardInfoList); 
         }*/
-        
+
         #endregion
 
         #region Error Codes
         readonly int E_BLUETOOTH_ATT_WRITE_NOT_PERMITTED = unchecked((int)0x80650003);
-                readonly int E_BLUETOOTH_ATT_INVALID_PDU = unchecked((int)0x80650004);
-                readonly int E_ACCESSDENIED = unchecked((int)0x80070005);
-                readonly int E_DEVICE_NOT_AVAILABLE = unchecked((int)0x800710df); // HRESULT_FROM_WIN32(ERROR_DEVICE_NOT_AVAILABLE)
-                #endregion
+        readonly int E_BLUETOOTH_ATT_INVALID_PDU = unchecked((int)0x80650004);
+        readonly int E_ACCESSDENIED = unchecked((int)0x80070005);
+        readonly int E_DEVICE_NOT_AVAILABLE = unchecked((int)0x800710df); // HRESULT_FROM_WIN32(ERROR_DEVICE_NOT_AVAILABLE)
+        #endregion
 
         #region UI Code
         public Scenario2_Client()
@@ -99,8 +97,8 @@ namespace SDKTemplate
             ConnectButton_Click();
             //jgw start up the TimedKeyboardManager utility class
             TimedKeyboardManager.Start(); //note this is a static class (i.e. not instantiated)
-                       
-            
+
+
         }
 
         protected override async void OnNavigatedFrom(NavigationEventArgs e)
@@ -185,10 +183,10 @@ namespace SDKTemplate
                         {
                             //JGW if so, attempt to auto-select the right characteristics
                             #region AttemptedAutoSelect 
-                            
+
                             CharacteristicCollection.Clear();
                             RemoveValueChangedHandler();
-                            
+
                             IReadOnlyList<GattCharacteristic> characteristics = null;
                             try
                             {
@@ -201,7 +199,7 @@ namespace SDKTemplate
                                     var resultCharacteristics = await testAttributeVar.service.GetCharacteristicsAsync(BluetoothCacheMode.Uncached);
                                     if (resultCharacteristics.Status == GattCommunicationStatus.Success)
                                     {
-                                        
+
                                         characteristics = resultCharacteristics.Characteristics;
                                     }
                                     else
@@ -236,7 +234,7 @@ namespace SDKTemplate
                                 //BluetoothLEAttributeDisplay attributeInfoDisp = new BluetoothLEAttributeDisplay();
                                 CharacteristicCollection.Add(new BluetoothLEAttributeDisplay(c));
                                 BluetoothLEAttributeDisplay testAttributeChars = new BluetoothLEAttributeDisplay(c);
-                                if (testAttributeChars.Name=="SimpleKeyState")
+                                if (testAttributeChars.Name == "SimpleKeyState")
                                 {
                                     selectedCharacteristic = testAttributeChars.characteristic;
                                     if (selectedCharacteristic == null)
@@ -256,7 +254,7 @@ namespace SDKTemplate
 
 
 
-                                #endregion
+                        #endregion
 
                     }
                     ConnectButton.Visibility = Visibility.Collapsed;
@@ -332,7 +330,7 @@ namespace SDKTemplate
         //JGW attempt to determine key press status
         private void OnKeyDownHandler(Object sender, KeyRoutedEventArgs e)
         {
-            if(e.Key == Windows.System.VirtualKey.Up)
+            if (e.Key == Windows.System.VirtualKey.Up)
             {
                 rootPage.NotifyUser("Key is down", NotifyType.ErrorMessage);
             }
@@ -363,7 +361,7 @@ namespace SDKTemplate
 
         private async void CharacteristicList_SelectionChanged()
         {
-            selectedCharacteristic = null; 
+            selectedCharacteristic = null;
 
             var attributeInfoDisp = (BluetoothLEAttributeDisplay)CharacteristicList.SelectedItem;
             if (attributeInfoDisp == null)
@@ -449,40 +447,40 @@ namespace SDKTemplate
 
         private void keepReadingValues()
         {
-            var t = Task.Run( async () =>
-               {
-                    async void characteristicRead()
-                    {
-                        // BT_Code: Read the actual value from the device by using Uncached.
-                        GattReadResult result = await selectedCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
-                        if (result.Status == GattCommunicationStatus.Success)
-                        {
-                            string formattedResult = FormatValueByPresentation(result.Value, presentationFormat);
-                            rootPage.NotifyUser($"Read result: {formattedResult}", NotifyType.StatusMessage);
-                            Debug.WriteLine("Read Suceeded");
-                        }
-                        else
-                        {
-                            rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
-                            Debug.WriteLine("Read failed");
-                        }
+            var t = Task.Run(async () =>
+              {
+                  async void characteristicRead()
+                  {
+                       // BT_Code: Read the actual value from the device by using Uncached.
+                       GattReadResult result = await selectedCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+                      if (result.Status == GattCommunicationStatus.Success)
+                      {
+                          string formattedResult = FormatValueByPresentation(result.Value, presentationFormat);
+                          rootPage.NotifyUser($"Read result: {formattedResult}", NotifyType.StatusMessage);
+                          Debug.WriteLine("Read Suceeded");
+                      }
+                      else
+                      {
+                          rootPage.NotifyUser($"Read failed: {result.Status}", NotifyType.ErrorMessage);
+                          Debug.WriteLine("Read failed");
+                      }
 
-                    }
+                  }
 
-                    //jgw 5/1/20, may need an outer while loop that keeps reconnecting with device if no recent read  
-
-
-                    while (keepReading == true)
-                    {
-                        characteristicRead();
-                        await Task.Delay(150);
-                    }
+                   //jgw 5/1/20, may need an outer while loop that keeps reconnecting with device if no recent read  
 
 
-                });
+                   while (keepReading == true)
+                  {
+                      characteristicRead();
+                      await Task.Delay(150);
+                  }
 
-                
-           
+
+              });
+
+
+
         }
 
         private async void CharacteristicWriteButton_Click()
@@ -735,6 +733,6 @@ namespace SDKTemplate
             //Debug.WriteLine("got input"); //dataDouble.ToString()
             return dataDouble.ToString();
         }
-        
+
     }
 }

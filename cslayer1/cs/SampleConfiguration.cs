@@ -11,8 +11,6 @@
 
 using System;
 using System.Collections.Generic;
-using Windows.ApplicationModel.Background;
-using Windows.Storage;
 using Windows.UI.Xaml.Controls;
 
 namespace SDKTemplate

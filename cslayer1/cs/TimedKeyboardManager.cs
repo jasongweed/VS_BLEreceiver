@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Windows.UI.Input.Preview.Injection;
-using Windows.UI.Xaml;
-using Windows.Gaming.Input;
-using System.Net.Http;
-using Windows.Storage.Streams;
+using System.Threading.Tasks;
 using Windows.Security.Cryptography;
+using Windows.Storage.Streams;
+using Windows.UI.Input.Preview.Injection;
 
 namespace SDKTemplate
 {
@@ -35,9 +29,11 @@ namespace SDKTemplate
         public static long newestTimeSesorAboveThreshold = 0;
         public static long previousTimeSesorAboveThreshold = 0;
         public static long lastKeyPressTime = 0;
-        public static long millisToHoldKey = 600;
+        public static long millisToHoldKey = 400;
         public static long elapsedFrozen = 0; //for testing purposes
         private static bool keyPressed = false;
+        private static double priorValue=0;
+        private static long priorValueTime = 0;
         //private long elapsedTime = 0; //maybe not necesssary
         #endregion
 
@@ -65,25 +61,25 @@ namespace SDKTemplate
 
             if (data != null)
             {
-
-
                 try
                 {
                     char dataChar = (char)data[0];
                     double dataDouble = (double)dataChar;
-                    //Debug.WriteLine("got input"); //dataDouble.ToString()
-                    if (dataDouble >= 0 && dataDouble <= 100) 
+                    if (priorValue != dataDouble)
                     {
+                        priorValue = dataDouble;
+                        priorValueTime = globalStopwatch.ElapsedMilliseconds;
+                    }
 
-                        if (dataDouble > 5) //18 is threhold for iphone based sensor as of
+                    if (dataDouble >= 0 && dataDouble <= 100)
+                    {
+                        if (dataDouble > 0 && (priorValueTime - globalStopwatch.ElapsedMilliseconds)<200)  //can probably remove dataDouble>0
                         {
                             Debug.WriteLine("trigger now");
                             TimedKeyboardManager.newestTimeSesorAboveThreshold = TimedKeyboardManager.globalStopwatch.ElapsedMilliseconds;   //uncomment this line to return input injecion
-
                         }
                         //return dataDouble.ToString();
                     }
-
                 }
                 catch
                 {
@@ -93,18 +89,19 @@ namespace SDKTemplate
 
         public static void StartSensorKeyboardLoopTask()
         {
-            var t = Task.Run(() => {
+            var t = Task.Run(() =>
+            {
                 ///start of asynchronous task function definition
                 Debug.WriteLine("Executed function from new thread!!");
                 ///TOOD: make a while loop
                 while (true)
                 {
                     //if there's a new reading that crosses threshold, extend time to hold key
-                    if(previousTimeSesorAboveThreshold!= newestTimeSesorAboveThreshold)
+                    if (previousTimeSesorAboveThreshold != newestTimeSesorAboveThreshold)
                     {
                         //set the previous time detected as the newest time detected
                         previousTimeSesorAboveThreshold = newestTimeSesorAboveThreshold;
-                        
+
                         //update the time to release the key
                         releaseAccelerateKeyTime = newestTimeSesorAboveThreshold + millisToHoldKey;
                     }
@@ -125,18 +122,18 @@ namespace SDKTemplate
                             if (elapsedFrozen - lastKeyPressTime > 1)
                             {
                                 //press the key to accelerate in game!
-                                if (!keyPressed)
-                                {
-                                    pressKey();
-                                }
+                                //if (!keyPressed)
+                                //{
+                                pressKey();
+                                //}
                                 //attempt gamepad
                                 //pressGamepadButton();
                                 lastKeyPressTime = elapsedFrozen;
                                 keyPressed = true;
                             }
-                                
+
                         }
-                        
+
                     }
                     else
                     {
@@ -147,7 +144,6 @@ namespace SDKTemplate
                             {
                                 releaseKey();
                             }
-                            
                             //attempt Gamepad
                             //releaseGamePadButton();
                             keyPressed = false;
@@ -155,8 +151,8 @@ namespace SDKTemplate
 
                     }
 
-                    //Task.Delay(3000);
-                    
+                    //Task.Delay(300);
+
 
                 }//end of loop to update button pressing
 
@@ -166,22 +162,22 @@ namespace SDKTemplate
 
         public static void PrepareVirtualKeyboardInput()
         {
-            
+
             //do inputInjector.InjectKeyoboardInput(something of kind InjectedInputKeyboardInfo)
 
             //press the 'up' key in first variable; default KeyOptions is press
             vKeyBoardInfo_Press.VirtualKey = 0X39;//change to 0x26 for up arrow OR 0X57 for W key on https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
             //vKeyBoardInfo_Press.ScanCode = 48;
-            vKeyBoardInfo_Press.KeyOptions+= 0;
+            vKeyBoardInfo_Press.KeyOptions += 0;
 
             //release the 'up key in second variable; have to specify release
             vKeyBoardInfo_Release.VirtualKey = 0X39; //change to 0x26 for up arrow  https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-            vKeyBoardInfo_Release.KeyOptions+= 2; //changes the enum from 0 to 2, 0 being default press, 2 being release
+            vKeyBoardInfo_Release.KeyOptions += 2; //changes the enum from 0 to 2, 0 being default press, 2 being release
 
             //load the sequence of keying events into the list
             //vKeyBoardInfoList.Add(vKeyBoardInfo_Press);
             //vKeyBoardInfoList.Add(vKeyBoardInfo_Release);
-            
+
         }
 
 
@@ -191,7 +187,7 @@ namespace SDKTemplate
             //do inputInjector.InjectKeyoboardInput(something of kind InjectedInputKeyboardInfo)
 
             //press the 'up' key in first variable; default KeyOptions is press
-            
+
             //vGamepadInfo_Press.Buttons = GamepadButtons.A;//set to 4 for 'A' button   https://docs.microsoft.com/en-us/uwp/api/windows.gaming.input.gamepadbuttons 
             //vKeyBoardInfo_Press.ScanCode = 48;
             //vGamepadInfo_Press.Buttons -= 4; //change to zero to turn off button
@@ -199,7 +195,7 @@ namespace SDKTemplate
             //release the 'up key in second variable; have to specify release
             //vGamepadInfo_Release.Buttons = GamepadButtons.None; //change to 0x26 for up arrow  https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
             //vKeyBoardInfo_Release.KeyOptions += 2; //changes the enum from 0 to 2, 0 being default press, 2 being release
-            
+
         }
 
         public static void releaseKey()
@@ -221,7 +217,7 @@ namespace SDKTemplate
             {
                 //inputInjector.InjectGamepadInput(vGamepadInfo_Release);
             }
-            catch{}
+            catch { }
         }
 
 
@@ -233,8 +229,8 @@ namespace SDKTemplate
             {
                 inputInjector.InjectKeyboardInput(vKeyBoardInfoList);
             }
-            catch{}
-            Debug.WriteLine("Press key!");
+            catch { }
+            Debug.WriteLine("Pressed key!");
         }
 
         public static void pressGamepadButton()
@@ -244,7 +240,7 @@ namespace SDKTemplate
                 //inputInjector.InjectGamepadInput(vGamepadInfo_Press);
             }
             catch { }
-            Debug.WriteLine("Press key!");
+            //Debug.WriteLine("Press key!");
         }
 
         static public void TestDebugLog()

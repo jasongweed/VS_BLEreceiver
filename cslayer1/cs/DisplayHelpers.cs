@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Enumeration;
 using Windows.Storage.Streams;
@@ -67,7 +68,7 @@ namespace SDKTemplate
                             {
                                 return characteristic.UserDescription;
                             }
-                                
+
                             else
                             {
                                 return "Custom Characteristic: " + characteristic.Uuid;
@@ -127,6 +128,7 @@ namespace SDKTemplate
 
         public DeviceInformation DeviceInformation { get; private set; }
 
+        
         public string Id => DeviceInformation.Id;
         public string Name => DeviceInformation.Name;
         public bool IsPaired => DeviceInformation.Pairing.IsPaired;
@@ -150,7 +152,7 @@ namespace SDKTemplate
             OnPropertyChanged("IsConnected");
             OnPropertyChanged("Properties");
             OnPropertyChanged("IsConnectable");
-
+            OnPropertyChanged("Manufact_jgw");
             UpdateGlyphBitmapImage();
         }
 
@@ -375,7 +377,7 @@ namespace SDKTemplate
         {
             // Get the short Uuid
             var bytes = uuid.ToByteArray();
-            var shortUuid = (ushort) (bytes[0] | (bytes[1] << 8));
+            var shortUuid = (ushort)(bytes[0] | (bytes[1] << 8));
             return shortUuid;
         }
 

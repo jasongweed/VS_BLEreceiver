@@ -45,14 +45,14 @@
         </Grid.RowDefinitions>
         <StackPanel Margin="0,0,0,10">
             <TextBlock Text="List Bluetooth Devices" Style="{StaticResource SampleHeaderTextStyle}"/>
-            <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" Text="" Visibility="Collapsed"/>
+            <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" Text="" Visibility="Visible"/>
             <TextBlock TextWrapping="Wrap">
                 Click Search to find your Spintooth
             </TextBlock>
             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                 <Button x:ConnectionId='10' x:Name="EnumerateButton" Content="Search"                                        Margin="0,0,10,0"/>
-                <Button x:ConnectionId='11' x:Name="PairButton" Content="Pair"                                   Margin="0,0,10,0" Visibility="Collapsed"
-                                                                                                                                                                                              />
+                <Button x:ConnectionId='11' x:Name = "PairButton" Content="Pair"                                   Margin="0,0,10,0" Visibility="Visible"
+                                                                                                                                                                                           />
             </StackPanel>
         </StackPanel>
         <ScrollViewer VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="0,10,0,0"

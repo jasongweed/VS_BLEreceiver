@@ -13,14 +13,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using Windows.Devices.Bluetooth;
 using Windows.Devices.Enumeration;
 using Windows.UI.Core;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-
-using Windows.Devices.Bluetooth.Advertisement; //JGW new
 
 namespace SDKTemplate
 {
@@ -75,7 +71,7 @@ namespace SDKTemplate
                 EnumerateButton.Content = "Start enumerating";
                 rootPage.NotifyUser($"Device watcher stopped.", NotifyType.StatusMessage);
             }
-        }        
+        }
         #endregion
 
         #region Device discovery
@@ -157,7 +153,7 @@ namespace SDKTemplate
             return null;
         }
 
-        private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInfo) 
+        private async void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation deviceInfo)
         {
             // We must update the collection on the UI thread because the collection is databound to a UI element.
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -232,7 +228,7 @@ namespace SDKTemplate
             {
                 lock (this)
                 {
-                    Debug.WriteLine(String.Format("Removed {0}{1}", deviceInfoUpdate.Id,""));
+                    Debug.WriteLine(String.Format("Removed {0}{1}", deviceInfoUpdate.Id, ""));
 
                     // Protect against race condition if the task runs after the app stopped the deviceWatcher.
                     if (sender == deviceWatcher)
