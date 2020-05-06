@@ -1,3 +1,18 @@
+
+Microsoft's documentation per below:
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!---
   category: DevicesSensorsAndPower
   samplefwlink: http://go.microsoft.com/fwlink/p/?LinkId=820786
